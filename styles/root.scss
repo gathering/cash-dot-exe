@@ -1,0 +1,8 @@
+@use "@fremtind/jkl-core/jkl";
+@use "@fremtind/jkl-webfonts/webfonts.scss" with (
+  $webfonts-dir: "/fonts"
+);
+
+main {
+  margin: jkl.$spacing-xl jkl.$spacing-2xl;
+}
