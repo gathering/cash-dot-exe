@@ -1,7 +1,25 @@
+@use "@fremtind/jkl-core/core";
 @use "@fremtind/jkl-core/jkl";
-@use "@fremtind/jkl-webfonts/webfonts.scss" with (
-  $webfonts-dir: "/fonts"
-);
+
+:root,
+.jkl {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  :root,
+  .jkl {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+header {
+  color: jkl.$color-hvit;
+  background-color: jkl.$color-granitt;
+  padding: jkl.$spacing-l jkl.$spacing-xl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 main {
   margin: jkl.$spacing-xl jkl.$spacing-2xl;

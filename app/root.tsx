@@ -7,12 +7,18 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import coreStyle from "@fremtind/jkl-core/core.min.css";
+import messageBoxStyle from "@fremtind/jkl-message-box/message-box.min.css";
+import buttonStyle from "@fremtind/jkl-button/button.min.css";
+import { initTabListener } from "@fremtind/jkl-core";
 import rootStyle from "./styles/root.css";
 
-const jklStyles: string[] = [coreStyle];
+const jklStyles: string[] = [messageBoxStyle, buttonStyle];
 
 export const links: LinksFunction = () => [
+  {
+    href: "https://rsms.me/inter/inter.css",
+    rel: "stylesheet",
+  },
   {
     href: rootStyle,
     rel: "stylesheet",
@@ -29,6 +35,8 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+initTabListener();
+
 export default function App() {
   return (
     <html lang="no">
@@ -37,9 +45,7 @@ export default function App() {
         <Links />
       </head>
       <body className="jkl" data-theme="light">
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
