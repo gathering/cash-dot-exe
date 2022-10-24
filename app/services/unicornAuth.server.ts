@@ -28,6 +28,12 @@ export interface UnicornProfile {
     provider: "unicorn";
 }
 
+const authorizationURL = getRequiredEnvironmentVariable("AUTHORIZATION_URL");
+const tokenURL = getRequiredEnvironmentVariable("TOKEN_URL");
+const clientID = getRequiredEnvironmentVariable("CLIENT_ID");
+const clientSecret = getRequiredEnvironmentVariable("CLIENT_SECRET");
+const callbackURL = getRequiredEnvironmentVariable("CALLBACK_URL");
+
 // And we create our strategy extending the OAuth2Strategy, we also need to
 // pass the User as we did on the FormStrategy, we pass the Auth0Profile and the
 // extra params
@@ -50,12 +56,6 @@ export class UnicornStrategy<User> extends OAuth2Strategy<User, UnicornProfile, 
         // The latest two matching the types of Auth0Profile and Auth0ExtraParams.
         verify: StrategyVerifyCallback<User, OAuth2StrategyVerifyParams<UnicornProfile, UnicornExtraParams>>
     ) {
-        const authorizationURL = getRequiredEnvironmentVariable("AUTHORIZATION_URL");
-        const tokenURL = getRequiredEnvironmentVariable("TOKEN_URL");
-        const clientID = getRequiredEnvironmentVariable("CLIENT_ID");
-        const clientSecret = getRequiredEnvironmentVariable("CLIENT_SECRET");
-        const callbackURL = getRequiredEnvironmentVariable("CALLBACK_URL");
-
         // And we pass the options to the super constructor using our own options
         // to generate them, this was we can ask less configuration to the developer
         // using our strategy
